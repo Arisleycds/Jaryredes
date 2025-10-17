@@ -3,172 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Moderno e Simples</title>
+    <title>The Gentleman's Cut - Barbearia Premium</title>
     <style>
-        /* Variáveis CSS para Cores */
+        /* Variáveis CSS */
         :root {
-            --cor-principal: #3498db; /* Azul vibrante */
-            --cor-secundaria: #2c3e50; /* Azul escuro/quase preto */
-            --fundo-claro: #f4f6f9;
-            --texto-escuro: #333;
-            --sombra-suave: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --cor-fundo: #1c1c1c;       /* Cinza Escuro Quase Preto */
+            --cor-destaque: #c08c4e;    /* Dourado/Cobre Elegante */
+            --cor-texto: #f5f5f5;       /* Branco Off-White */
+            --cor-card: #2c2c2c;
+            --fonte-titulo: 'Georgia', serif;
+            --fonte-padrao: 'Arial', sans-serif;
         }
 
         /* Estilos Globais */
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: var(--fonte-padrao);
             margin: 0;
             padding: 0;
-            background-color: var(--fundo-claro);
-            color: var(--texto-escuro);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
             line-height: 1.6;
         }
 
         a {
             text-decoration: none;
-            color: var(--cor-principal);
-            transition: color 0.3s ease;
+            color: var(--cor-destaque);
+            transition: color 0.3s;
         }
 
         a:hover {
-            color: var(--cor-secundaria);
+            color: #d1b184; /* Tom mais claro do dourado */
         }
 
-        /* HEADER - Cabeçalho Principal */
-        header {
-            background-color: var(--cor-secundaria);
-            color: #fff;
-            padding: 20px 0;
-            box-shadow: var(--sombra-suave);
+        h1, h2, h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-destaque);
+            text-align: center;
+        }
+        
+        section {
+            padding: 80px 20px;
+            text-align: center;
         }
 
-        header .container {
-            max-width: 1200px;
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+            border-bottom: 3px solid var(--cor-destaque);
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--cor-destaque);
+            font-family: var(--fonte-titulo);
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            margin: 0 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        nav a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* SEÇÃO HERO (Banner Inicial) */
+        #hero {
+            background: url('https://via.placeholder.com/1500x700/333333/FFFFFF?text=IMAGEM+BARBEARIA') no-repeat center center/cover;
+            color: white;
+            padding: 150px 20px;
+        }
+        
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: var(--cor-destaque);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #hero p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .btn-agendar {
+            display: inline-block;
+            background-color: var(--cor-destaque);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-agendar:hover {
+            background-color: #e0ac69;
+            color: #111;
+        }
+
+        /* SEÇÃO SERVIÇOS */
+        #servicos h2 {
+            margin-bottom: 40px;
+        }
+
+        .servicos-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .servico-item {
+            background-color: var(--cor-card);
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .servico-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .servico-item h3 {
+            font-size: 1.5em;
+            color: var(--cor-destaque);
+            margin-top: 0;
+        }
+
+        /* SEÇÃO CONTATO/FOOTER */
+        #contato {
+            background-color: var(--cor-card);
+            border-top: 3px solid var(--cor-destaque);
+            color: var(--cor-texto);
+        }
+
+        .contato-info {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            text-align: left;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            letter-spacing: 1px;
-        }
-
-        header nav a {
-            color: #fff;
-            margin-left: 20px;
-            font-weight: 500;
-        }
-
-        header nav a:hover {
-            color: var(--cor-principal);
-        }
-
-        /* LAYOUT PRINCIPAL (Main e Aside) */
-        .content-area {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        /* MAIN - Área de Postagens */
-        main {
-            flex: 3; /* Ocupa 3/4 do espaço */
-            margin-right: 30px;
-        }
-
-        .post-card {
-            background-color: #fff;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: var(--sombra-suave);
-            transition: transform 0.3s ease;
-        }
-
-        .post-card:hover {
-            transform: translateY(-5px); /* Efeito de elevação sutil */
-        }
-
-        .post-card h2 {
-            color: var(--cor-secundaria);
-            margin-top: 0;
-            font-size: 1.8em;
-        }
-
-        .post-meta {
-            color: #999;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .post-meta span {
-            margin-right: 15px;
-        }
-
-        .post-summary {
+        .contato-bloco {
+            width: 45%;
             margin-bottom: 20px;
         }
 
-        /* ASIDE - Barra Lateral */
-        aside {
-            flex: 1; /* Ocupa 1/4 do espaço */
-            padding-left: 20px;
+        .contato-bloco h3 {
+            color: var(--cor-destaque);
+            text-align: left;
         }
 
-        .widget {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: var(--sombra-suave);
-        }
-
-        .widget h3 {
-            color: var(--cor-principal);
-            border-bottom: 2px solid var(--cor-principal);
-            padding-bottom: 5px;
-            margin-top: 0;
-            font-size: 1.2em;
-        }
-
-        .widget ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .widget ul li {
-            padding: 5px 0;
-        }
-
-        /* FOOTER - Rodapé */
         footer {
-            background-color: var(--cor-secundaria);
-            color: #fff;
-            text-align: center;
             padding: 20px 0;
-            margin-top: 40px;
+            background-color: #000;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
         }
 
-        /* Responsividade (Para telas pequenas) */
+        /* Responsividade */
         @media (max-width: 768px) {
-            .content-area {
-                flex-direction: column; /* Coloca os itens um abaixo do outro */
+            #hero h1 {
+                font-size: 2.5em;
             }
-
-            main {
-                margin-right: 0;
+            .servicos-grid {
+                flex-direction: column;
+                align-items: center;
             }
-
-            aside {
-                margin-top: 20px;
-                padding-left: 0;
+            .contato-bloco {
+                width: 100%;
             }
         }
     </style>
@@ -177,69 +196,73 @@
 
     <header>
         <div class="container">
-            <h1><a href="index.html" style="color: white;">DEV Blog</a></h1>
+            <div class="logo">The Gentleman's Cut</div>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Categorias</a>
-                <a href="#">Sobre</a>
-                <a href="#">Contato</a>
+                <a href="#hero">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contato">Agendamento</a>
             </nav>
         </div>
     </header>
 
-    <div class="content-area">
-        
-        <main>
-            
-            <article class="post-card">
-                <h2><a href="#">O Futuro da Inteligência Artificial no Desenvolvimento Web</a></h2>
-                <div class="post-meta">
-                    <span>📅 17/10/2025</span>
-                    <span>👤 Por [Seu Nome]</span>
-                    <span>#IA, #WebDev</span>
-                </div>
-                <div class="post-summary">
-                    <p>Exploramos como as ferramentas de IA estão revolucionando a forma como escrevemos código, desde a geração automática de CSS até a criação de estruturas complexas de backend. A codificação está mudando...</p>
-                </div>
-                <p><a href="#" class="btn-leia-mais">Continuar Lendo &rarr;</a></p>
-            </article>
+    <section id="hero">
+        <div class="container">
+            <h1>Onde a Tradição Encontra o Estilo</h1>
+            <p>Os melhores cortes de cabelo, barba e tratamentos exclusivos para o cavalheiro moderno.</p>
+            <a href="#contato" class="btn-agendar">Agende Seu Horário</a>
+        </div>
+    </section>
 
-            <article class="post-card">
-                <h2><a href="#">Guia Completo de Configuração de Virtual Hosts no Apache</a></h2>
-                <div class="post-meta">
-                    <span>📅 15/10/2025</span>
-                    <span>👤 Por [Seu Nome]</span>
-                    <span>#Linux, #Servidores</span>
+    <section id="servicos">
+        <div class="container">
+            <h2>Nossos Serviços Premium</h2>
+            <div class="servicos-grid">
+                
+                <div class="servico-item">
+                    <h3>Corte Clássico</h3>
+                    <p>O tradicional corte tesoura, finalizado com produtos de alta qualidade. ($80)</p>
                 </div>
-                <div class="post-summary">
-                    <p>Aprenda a hospedar múltiplos sites no mesmo servidor Linux. Detalhamos o uso dos comandos 'a2ensite', 'a2dissite' e a importância dos certificados SSL do Let's Encrypt...</p>
+
+                <div class="servico-item">
+                    <h3>Barba Terapia</h3>
+                    <p>Barbear com toalha quente, navalha e massagem facial relaxante. ($60)</p>
                 </div>
-                <p><a href="#" class="btn-leia-mais">Continuar Lendo &rarr;</a></p>
-            </article>
 
-            </main>
+                <div class="servico-item">
+                    <h3>Pacote Completo</h3>
+                    <p>Corte de cabelo + Barba Terapia. Experiência completa de cuidado masculino. ($120)</p>
+                </div>
 
-        <aside>
-            <div class="widget">
-                <h3>Sobre o Autor</h3>
-                <p>Sou desenvolvedor full-stack e compartilho aqui tutoriais, dicas de programação e reflexões sobre tecnologia e infraestrutura.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2>Localização & Contato</h2>
+
+            <div class="contato-info">
+                <div class="contato-bloco">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 09h00 às 20h00</p>
+                    <p>Sábados: 09h00 às 17h00</p>
+                    <p>Domingos: Fechado</p>
+                </div>
+                
+                <div class="contato-bloco">
+                    <h3>Agende por WhatsApp</h3>
+                    <p>Telefone: (XX) XXXX-XXXX</p>
+                    <p>E-mail: contato@gentlemanscut.com</p>
+                    <p>Endereço: Rua do Barbeiro, 123 - Centro</p>
+                </div>
             </div>
 
-            <div class="widget">
-                <h3>Categorias</h3>
-                <ul>
-                    <li><a href="#">Front-end (12)</a></li>
-                    <li><a href="#">Back-end (8)</a></li>
-                    <li><a href="#">Linux & Infra (5)</a></li>
-                    <li><a href="#">Banco de Dados (3)</a></li>
-                </ul>
-            </div>
-        </aside>
-
-    </div>
+            <p>Utilize nosso <a href="#" style="color: white; text-decoration: underline;">Sistema de Agendamento Online</a> para marcar em 3 cliques!</p>
+        </div>
+    </section>
 
     <footer>
-        <p>Desenvolvido com ❤️ | &copy; 2025 Blog Moderno e Simples. Todos os direitos reservados.</p>
+        <p>&copy; 2025 The Gentleman's Cut. Todos os direitos reservados. Design por [Seu Nome].</p>
     </footer>
 
 </body>
