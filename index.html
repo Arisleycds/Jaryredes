@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Comunidade DevTalks</title>
+    <title>Loja DevTalks - Produtos para Desenvolvedores</title>
     <style>
         /* Variáveis CSS HERDADAS DA COMUNIDADE DEV TALKS */
         :root {
-            --cor-primaria: #4a90e2;
-            /* Azul Comunitário */
-            --cor-fundo: #f8f9fa;
-            /* Cinza bem claro */
+            --cor-primaria: #4a90e2; /* Azul Comunitário */
+            --cor-fundo: #f8f9fa; /* Cinza bem claro */
             --cor-card: #ffffff;
             --cor-texto: #343a40;
             --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --cor-verde-acao: #28a745;
+            --cor-verde-acao: #28a745; /* Botão Comprar */
             --cor-verde-hover: #218838;
             --cor-cabecalho-fundo: #e9ecef;
             --cor-meta-dados: #6c757d;
@@ -32,150 +29,173 @@
         }
 
         .container {
-            max-width: 600px;
-            /* Reduzi a largura para um formulário */
+            max-width: 1200px; /* Aumentei para caber mais produtos */
             margin: 40px auto;
             padding: 0 20px;
         }
-
-        /* Classes herdadas para o visual do card e botão */
-        .forum-list {
-            background-color: var(--cor-card);
-            border-radius: 8px;
-            box-shadow: var(--sombra-card);
-            overflow: hidden;
-            padding: 30px;
-        }
-
-        .btn-novo-topico {
-            display: inline-block;
-            background-color: var(--cor-verde-acao);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
-            border: none;
-            /* Adicionado para o botão */
-            cursor: pointer;
-            width: 100%;
-            /* Faz o botão ocupar a largura total do container */
-            margin-top: 15px;
-        }
-
-        .btn-novo-topico:hover {
-            background-color: var(--cor-verde-hover);
+        
+        a {
             text-decoration: none;
+            color: var(--cor-primaria);
         }
 
+        /* CABEÇALHO (Herdado) */
         .header-comunidade {
             background-color: var(--cor-primaria);
             color: white;
-            padding: 25px 20px;
-            border-radius: 8px 8px 0 0;
+            padding: 30px 20px;
+            border-radius: 8px;
             text-align: center;
-            margin-bottom: 0;
-            /* Removido o margin-bottom para encaixar com o form-container */
+            margin-bottom: 30px;
         }
 
         .header-comunidade h1 {
             margin: 0;
-            font-size: 2em;
+            font-size: 2.2em;
         }
-
-        .header-comunidade p {
-            margin: 5px 0 0;
-        }
-
-
-        /* Estilos Específicos do Formulário */
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--cor-texto);
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="text"],
-        /* Assunto */
-        .form-group textarea {
-            padding: 10px 12px;
-            border: 1px solid #ced4da;
+        
+        /* BOTÃO COMPRAR (Reutiliza o estilo do botão de ação) */
+        .btn-comprar {
+            display: block; /* Ocupa a largura total do card */
+            background-color: var(--cor-verde-acao);
+            color: white;
+            padding: 10px 15px;
             border-radius: 4px;
-            font-size: 1em;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-comprar:hover {
+            background-color: var(--cor-verde-hover);
+            text-decoration: none;
+        }
+
+
+        /* ESTRUTURA DA LOJA/GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3-4 colunas, responsivo */
+            gap: 25px;
+        }
+
+        .product-card {
             background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px); /* Efeito de elevação sutil no hover */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--cor-fundo); /* Placeholder visual */
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: var(--cor-meta-dados);
+        }
+
+        .product-title {
+            font-size: 1.3em;
+            font-weight: 600;
             color: var(--cor-texto);
+            margin-bottom: 5px;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--cor-primaria);
-            box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
-            outline: none;
-            background-color: var(--cor-card);
+        .product-description {
+            font-size: 0.9em;
+            color: var(--cor-meta-dados);
+            margin-bottom: 15px;
+            height: 40px; /* Altura fixa para alinhar preços */
+            overflow: hidden;
         }
 
-        .form-group textarea {
-            resize: vertical;
+        .product-price {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            margin-bottom: 5px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+            }
         }
     </style>
 </head>
-
 <body>
 
     <div class="container">
-
-        <div class="header-comunidade" style="border-radius: 8px 8px 0 0;">
-            <h1>Fale Conosco - DevTalks</h1>
-            <p>Envie suas dúvidas, sugestões ou entre em contato com a moderação.</p>
+        
+        <div class="header-comunidade">
+            <h1>A Loja do Dev</h1>
+            <p>Ferramentas, cursos e a melhor caneca para seu café!</p>
         </div>
 
-        <div class="form-container forum-list" style="border-radius: 0 0 8px 8px;">
-            <form action="#" method="POST" class="contact-form">
+        <div class="product-grid">
 
-                <div class="form-group">
-                    <label for="nome">Seu Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    Caneca "Hello World"
                 </div>
+                <div class="product-title">Caneca Hello World</div>
+                <div class="product-description">A caneca essencial para começar o dia com o código certo.</div>
+                <div class="product-price">R$ 49,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
 
-                <div class="form-group">
-                    <label for="email">Seu Email:</label>
-                    <input type="email" id="email" name="email" required>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    Curso de JS Avançado
                 </div>
+                <div class="product-title">Curso JavaScript Avançado</div>
+                <div class="product-description">Domine as últimas funcionalidades do ES6+ e padrões de projeto.</div>
+                <div class="product-price">R$ 299,00</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
 
-                <div class="form-group">
-                    <label for="assunto">Assunto:</label>
-                    <input type="text" id="assunto" name="assunto" required>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    Licença IDE Pro
                 </div>
+                <div class="product-title">Licença IDE Pro Anual</div>
+                <div class="product-description">Acesso completo ao melhor ambiente de desenvolvimento integrado do mercado.</div>
+                <div class="product-price">R$ 549,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
 
-                <div class="form-group">
-                    <label for="mensagem">Mensagem:</label>
-                    <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    Pack de Adesivos
                 </div>
+                <div class="product-title">Pack de Adesivos Tech</div>
+                <div class="product-description">Deixe seu notebook com a cara das tecnologias que você ama!</div>
+                <div class="product-price">R$ 29,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
 
-                <button type="submit" class="btn-novo-topico">
-                    Enviar Mensagem
-                </button>
-            </form>
         </div>
 
     </div>
 
 </body>
-
 </html>
