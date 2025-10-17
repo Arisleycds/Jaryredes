@@ -1,269 +1,325 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Gentleman's Cut - Barbearia Premium</title>
+    <title>TechWave - O Seu Portal de Tecnologia</title>
     <style>
-        /* Variáveis CSS */
+        /* Variáveis CSS HERDADAS DA COMUNIDADE DEV TALKS */
         :root {
-            --cor-fundo: #1c1c1c;       /* Cinza Escuro Quase Preto */
-            --cor-destaque: #c08c4e;    /* Dourado/Cobre Elegante */
-            --cor-texto: #f5f5f5;       /* Branco Off-White */
-            --cor-card: #2c2c2c;
-            --fonte-titulo: 'Georgia', serif;
-            --fonte-padrao: 'Arial', sans-serif;
+            --cor-primaria: #4a90e2;
+            /* Azul Comunitário */
+            --cor-fundo: #f8f9fa;
+            /* Cinza bem claro */
+            --cor-card: #ffffff;
+            --cor-texto: #343a40;
+            --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --cor-verde-acao: #28a745;
+            --cor-verde-hover: #218838;
+            --cor-cabecalho-fundo: #e9ecef;
+            --cor-meta-dados: #6c757d;
+            --cor-hover-fundo: #f0f8ff;
+            --cor-link-secundario: #007bff;
         }
 
         /* Estilos Globais */
         body {
-            font-family: var(--fonte-padrao);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
-            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         a {
             text-decoration: none;
-            color: var(--cor-destaque);
-            transition: color 0.3s;
+            color: var(--cor-link-secundario);
         }
 
         a:hover {
-            color: #d1b184; /* Tom mais claro do dourado */
+            text-decoration: underline;
         }
 
-        h1, h2, h3 {
-            font-family: var(--fonte-titulo);
-            color: var(--cor-destaque);
-            text-align: center;
-        }
-        
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* HEADER & NAVEGAÇÃO */
-        header {
-            background-color: #000;
-            padding: 20px 0;
-            border-bottom: 3px solid var(--cor-destaque);
-        }
-
-        .logo {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--cor-destaque);
-            font-family: var(--fonte-titulo);
-            margin-bottom: 10px;
-        }
-
-        nav a {
-            color: var(--cor-texto);
-            margin: 0 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        nav a:hover {
-            color: var(--cor-destaque);
-        }
-
-        /* SEÇÃO HERO (Banner Inicial) */
-        #hero {
-            background: url('https://via.placeholder.com/1500x700/333333/FFFFFF?text=IMAGEM+BARBEARIA') no-repeat center center/cover;
+        /* CABEÇALHO/BANNER (Herdado) */
+        .header-comunidade {
+            background-color: var(--cor-primaria);
             color: white;
-            padding: 150px 20px;
-        }
-        
-        #hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            color: var(--cor-destaque);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        #hero p {
-            font-size: 1.4em;
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-        .btn-agendar {
-            display: inline-block;
-            background-color: var(--cor-destaque);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
+        .header-comunidade h1 {
+            margin: 0;
+            font-size: 2.8em;
             letter-spacing: 1px;
-            transition: background-color 0.3s;
         }
 
-        .btn-agendar:hover {
-            background-color: #e0ac69;
-            color: #111;
+        .header-comunidade p {
+            font-size: 1.1em;
+            margin-top: 10px;
+            opacity: 0.9;
         }
 
-        /* SEÇÃO SERVIÇOS */
-        #servicos h2 {
-            margin-bottom: 40px;
+        /* NAVEGAÇÃO SUPERIOR */
+        .nav-bar {
+            background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            margin-bottom: 30px;
+            padding: 10px 20px;
         }
 
-        .servicos-grid {
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
             justify-content: space-around;
+        }
+
+        .nav-list a {
+            color: var(--cor-texto);
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.2s, background-color 0.2s;
+            border-radius: 4px;
+        }
+
+        .nav-list a:hover {
+            color: var(--cor-primaria);
+            background-color: var(--cor-fundo);
+            text-decoration: none;
+        }
+
+
+        /* GRID DE CONTEÚDO (Misto: Destaque e Cards) */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Duas colunas principais */
             gap: 30px;
-            flex-wrap: wrap;
         }
 
-        .servico-item {
+        .main-articles {
+            grid-column: 1 / 3;
+            /* Ocupa as duas colunas em telas grandes */
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            /* Grid interno de 3 colunas */
+            gap: 20px;
+        }
+
+        .article-card {
             background-color: var(--cor-card);
-            padding: 30px;
             border-radius: 8px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
+            box-shadow: var(--sombra-card);
+            transition: transform 0.2s;
+            overflow: hidden;
         }
 
-        .servico-item:hover {
-            transform: translateY(-5px);
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
-        
-        .servico-item h3 {
-            font-size: 1.5em;
-            color: var(--cor-destaque);
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            background-color: var(--cor-cabecalho-fundo);
+            /* Placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: var(--cor-meta-dados);
+            overflow: hidden;
+        }
+
+        .article-content {
+            padding: 15px;
+        }
+
+        .article-category {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .article-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 10px 0;
+        }
+
+        .article-title a {
+            color: var(--cor-texto);
+        }
+
+        .article-meta {
+            font-size: 0.85em;
+            color: var(--cor-meta-dados);
+        }
+
+        /* DESTAQUE */
+        .featured-article {
+            grid-column: 1 / 3;
+            /* Ocupa duas colunas para destaque */
+            display: flex;
+            background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .featured-image-container {
+            flex: 1;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            background-color: var(--cor-primaria);
+            border-radius: 8px 0 0 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            overflow: hidden;
+        }
+
+        .featured-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .featured-title {
+            font-size: 2em;
+            color: var(--cor-texto);
             margin-top: 0;
         }
 
-        /* SEÇÃO CONTATO/FOOTER */
-        #contato {
-            background-color: var(--cor-card);
-            border-top: 3px solid var(--cor-destaque);
-            color: var(--cor-texto);
-        }
-
-        .contato-info {
-            display: flex;
-            justify-content: space-between;
-            text-align: left;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .contato-bloco {
-            width: 45%;
-            margin-bottom: 20px;
-        }
-
-        .contato-bloco h3 {
-            color: var(--cor-destaque);
-            text-align: left;
-        }
-
-        footer {
-            padding: 20px 0;
-            background-color: #000;
-            font-size: 0.9em;
-            border-top: 1px solid #333;
-        }
-
         /* Responsividade */
-        @media (max-width: 768px) {
-            #hero h1 {
-                font-size: 2.5em;
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
             }
-            .servicos-grid {
+
+            .main-articles {
+                grid-column: 1 / 2;
+                grid-template-columns: 1fr;
+                /* Coluna única em mobile */
+            }
+
+            .featured-article {
                 flex-direction: column;
-                align-items: center;
+                grid-column: 1 / 2;
             }
-            .contato-bloco {
+
+            .featured-image-container {
                 width: 100%;
+            }
+
+            .featured-image {
+                border-radius: 8px 8px 0 0;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="container">
-            <div class="logo">The Gentleman's Cut</div>
-            <nav>
-                <a href="#hero">Início</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#contato">Agendamento</a>
-            </nav>
+    <div class="container">
+
+        <div class="header-comunidade">
+            <h1>TechWave</h1>
+            <p>Sua onda diária de inovação: Notícias, Reviews e Análises Profundas.</p>
         </div>
-    </header>
 
-    <section id="hero">
-        <div class="container">
-            <h1>Onde a Tradição Encontra o Estilo</h1>
-            <p>Os melhores cortes de cabelo, barba e tratamentos exclusivos para o cavalheiro moderno.</p>
-            <a href="#contato" class="btn-agendar">Agende Seu Horário</a>
-        </div>
-    </section>
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Inteligência Artificial</a></li>
+                <li><a href="#">Hardware</a></li>
+                <li><a href="#">Startups</a></li>
+                <li><a href="#">Reviews</a></li>
+            </ul>
+        </nav>
 
-    <section id="servicos">
-        <div class="container">
-            <h2>Nossos Serviços Premium</h2>
-            <div class="servicos-grid">
-                
-                <div class="servico-item">
-                    <h3>Corte Clássico</h3>
-                    <p>O tradicional corte tesoura, finalizado com produtos de alta qualidade. ($80)</p>
-                </div>
+        <div class="content-grid">
 
-                <div class="servico-item">
-                    <h3>Barba Terapia</h3>
-                    <p>Barbear com toalha quente, navalha e massagem facial relaxante. ($60)</p>
-                </div>
+            <div class="main-articles">
 
-                <div class="servico-item">
-                    <h3>Pacote Completo</h3>
-                    <p>Corte de cabelo + Barba Terapia. Experiência completa de cuidado masculino. ($120)</p>
-                </div>
+                <article class="featured-article">
+                    <div class="featured-image-container">
+                        <div class="featured-image">
+                            Imagem de Destaque
+                        </div>
+                    </div>
+                    <div class="featured-content">
+                        <div class="article-category">ANÁLISE EXCLUSIVA</div>
+                        <h2 class="featured-title"><a href="#">O Novo Chip Quântico da Google: Uma Revolução na
+                                Computação</a></h2>
+                        <p>Analisamos em primeira mão o impacto e a promessa do novo processador quântico que pode mudar
+                            o cenário da IA e da segurança de dados.</p>
+                        <p class="article-meta">Publicado por **Equipe TechWave** | Há 2 horas</p>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image">
+                        Capa do Artigo
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Hardware</div>
+                        <h3 class="article-title"><a href="#">Review da GeForce RTX 5080: Vale o Upgrade?</a></h3>
+                        <p class="article-meta">Por Maria Luiza | 17 de Outubro</p>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image">
+                        Capa do Artigo
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Software</div>
+                        <h3 class="article-title"><a href="#">As 5 Melhores Ferramentas No-Code de 2025</a></h3>
+                        <p class="article-meta">Por João Silva | 16 de Outubro</p>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image">
+                        Capa do Artigo
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Startups</div>
+                        <h3 class="article-title"><a href="#">Fintech Brasileira Recebe Investimento Série B de R$ 50
+                                Mi</a></h3>
+                        <p class="article-meta">Por Equipe TechWave | 15 de Outubro</p>
+                    </div>
+                </article>
 
             </div>
+
         </div>
-    </section>
 
-    <section id="contato">
-        <div class="container">
-            <h2>Localização & Contato</h2>
-
-            <div class="contato-info">
-                <div class="contato-bloco">
-                    <h3>Horário de Funcionamento</h3>
-                    <p>Segunda a Sexta: 09h00 às 20h00</p>
-                    <p>Sábados: 09h00 às 17h00</p>
-                    <p>Domingos: Fechado</p>
-                </div>
-                
-                <div class="contato-bloco">
-                    <h3>Agende por WhatsApp</h3>
-                    <p>Telefone: (XX) XXXX-XXXX</p>
-                    <p>E-mail: contato@gentlemanscut.com</p>
-                    <p>Endereço: Rua do Barbeiro, 123 - Centro</p>
-                </div>
-            </div>
-
-            <p>Utilize nosso <a href="#" style="color: white; text-decoration: underline;">Sistema de Agendamento Online</a> para marcar em 3 cliques!</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 The Gentleman's Cut. Todos os direitos reservados. Design por [Seu Nome].</p>
-    </footer>
+    </div>
 
 </body>
+
 </html>
