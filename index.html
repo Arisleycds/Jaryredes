@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade DevTalks - Fórum</title>
+    <title>Contato - Comunidade DevTalks</title>
     <style>
-        /* Variáveis CSS */
+        /* Variáveis CSS HERDADAS DA COMUNIDADE DEV TALKS */
         :root {
             --cor-primaria: #4a90e2;
             /* Azul Comunitário */
@@ -20,7 +20,6 @@
             --cor-cabecalho-fundo: #e9ecef;
             --cor-meta-dados: #6c757d;
             --cor-hover-fundo: #f0f8ff;
-            /* Fundo levemente azul no hover */
         }
 
         /* Estilos Globais */
@@ -33,36 +32,21 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 600px;
+            /* Reduzi a largura para um formulário */
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        a {
-            text-decoration: none;
-            color: var(--cor-primaria);
+        /* Classes herdadas para o visual do card e botão */
+        .forum-list {
+            background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            overflow: hidden;
+            padding: 30px;
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* CABEÇALHO DA COMUNIDADE */
-        .header-comunidade {
-            background-color: var(--cor-primaria);
-            color: white;
-            padding: 25px 20px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .header-comunidade h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-
-        /* BOTÃO PRINCIPAL */
         .btn-novo-topico {
             display: inline-block;
             background-color: var(--cor-verde-acao);
@@ -70,9 +54,14 @@
             padding: 12px 25px;
             border-radius: 5px;
             font-weight: bold;
-            margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s;
+            border: none;
+            /* Adicionado para o botão */
+            cursor: pointer;
+            width: 100%;
+            /* Faz o botão ocupar a largura total do container */
+            margin-top: 15px;
         }
 
         .btn-novo-topico:hover {
@@ -80,92 +69,69 @@
             text-decoration: none;
         }
 
-        /* ESTRUTURA DA LISTA DE TÓPICOS */
-        .forum-list {
-            background-color: var(--cor-card);
-            border-radius: 8px;
-            box-shadow: var(--sombra-card);
-            overflow: hidden;
-        }
-
-        .topic-header {
-            display: flex;
-            padding: 15px 20px;
-            background-color: var(--cor-cabecalho-fundo);
-            font-weight: bold;
-            border-bottom: 1px solid #dee2e6;
-            color: var(--cor-texto);
-        }
-
-        .topic-row {
-            display: flex;
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            align-items: center;
-            transition: background-color 0.3s;
-        }
-
-        .topic-row:hover {
-            background-color: var(--cor-hover-fundo);
-        }
-
-        .topic-row:last-child {
-            border-bottom: none;
-        }
-
-        /* COLUNAS */
-        .col-titulo {
-            flex-basis: 60%;
-        }
-
-        .col-stats {
-            flex-basis: 15%;
+        .header-comunidade {
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 8px 8px 0 0;
             text-align: center;
-            font-size: 0.9em;
-            color: var(--cor-meta-dados);
+            margin-bottom: 0;
+            /* Removido o margin-bottom para encaixar com o form-container */
         }
 
-        .col-autor {
-            flex-basis: 25%;
-            text-align: right;
-            font-size: 0.9em;
-            color: var(--cor-meta-dados);
+        .header-comunidade h1 {
+            margin: 0;
+            font-size: 2em;
         }
 
-        .topic-title-link {
-            font-size: 1.1em;
+        .header-comunidade p {
+            margin: 5px 0 0;
+        }
+
+
+        /* Estilos Específicos do Formulário */
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
             font-weight: 600;
+            margin-bottom: 5px;
             color: var(--cor-texto);
         }
 
-        .topic-meta {
-            font-size: 0.8em;
-            color: #999;
-            margin-top: 5px;
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="text"],
+        /* Assunto */
+        .form-group textarea {
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: var(--cor-card);
+            color: var(--cor-texto);
         }
 
-        /* Responsividade */
-        @media (max-width: 600px) {
-            .topic-header {
-                display: none;
-            }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+            outline: none;
+            background-color: var(--cor-card);
+        }
 
-            .topic-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .col-titulo,
-            .col-stats,
-            .col-autor {
-                flex-basis: 100%;
-                text-align: left;
-                margin-bottom: 5px;
-            }
-
-            .col-autor {
-                font-size: 0.8em;
-            }
+        .form-group textarea {
+            resize: vertical;
         }
     </style>
 </head>
@@ -174,69 +140,38 @@
 
     <div class="container">
 
-        <div class="header-comunidade">
-            <h1>DevTalks: Fórum de Desenvolvimento</h1>
-            <p>Conecte-se com desenvolvedores e tire suas dúvidas! </p>
+        <div class="header-comunidade" style="border-radius: 8px 8px 0 0;">
+            <h1>Fale Conosco - DevTalks</h1>
+            <p>Envie suas dúvidas, sugestões ou entre em contato com a moderação.</p>
         </div>
 
-        <a href="#" class="btn-novo-topico">Criar Novo Tópico</a>
+        <div class="form-container forum-list" style="border-radius: 0 0 8px 8px;">
+            <form action="#" method="POST" class="contact-form">
 
-        <div class="forum-list">
+                <div class="form-group">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
 
-            <div class="topic-header">
-                <div class="col-titulo">Tópico</div>
-                <div class="col-stats">Respostas</div>
-                <div class="col-autor">Última Atividade</div>
-            </div>
+                <div class="form-group">
+                    <label for="email">Seu Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <div class="topic-row">
-                <div class="col-titulo">
-                    <a href="#" class="topic-title-link">Dúvida sobre a configuração de DNS para subdomínio</a>
-                    <div class="topic-meta">Na seção: **Infraestrutura** | Tags: #apache #dns</div>
+                <div class="form-group">
+                    <label for="assunto">Assunto:</label>
+                    <input type="text" id="assunto" name="assunto" required>
                 </div>
-                <div class="col-stats">15</div>
-                <div class="col-autor">
-                    Por: João Silva<br>
-                    Há 1h atrás
-                </div>
-            </div>
 
-            <div class="topic-row">
-                <div class="col-titulo">
-                    <a href="#" class="topic-title-link">Qual framework CSS usar para um projeto pequeno?</a>
-                    <div class="topic-meta">Na seção: **Front-end** | Tags: #css #frontend</div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
                 </div>
-                <div class="col-stats">32</div>
-                <div class="col-autor">
-                    Por: Maria Luiza<br>
-                    Há 5h atrás
-                </div>
-            </div>
 
-            <div class="topic-row">
-                <div class="col-titulo">
-                    <a href="#" class="topic-title-link">Melhores práticas para segurança em NodeJS</a>
-                    <div class="topic-meta">Na seção: **Back-end** | Tags: #security #node</div>
-                </div>
-                <div class="col-stats">7</div>
-                <div class="col-autor">
-                    Por: DevMaster<br>
-                    Ontem
-                </div>
-            </div>
-
-            <div class="topic-row">
-                <div class="col-titulo">
-                    <a href="#" class="topic-title-link">Criando uma landing page bonita apenas com HTML/CSS</a>
-                    <div class="topic-meta">Na seção: **Design** | Tags: #html #css</div>
-                </div>
-                <div class="col-stats">2</div>
-                <div class="col-autor">
-                    Por: Usuário Novo<br>
-                    3 dias atrás
-                </div>
-            </div>
-
+                <button type="submit" class="btn-novo-topico">
+                    Enviar Mensagem
+                </button>
+            </form>
         </div>
 
     </div>
