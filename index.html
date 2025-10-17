@@ -1,80 +1,171 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Contato Profissional</title>
-
+    <title>Comunidade DevTalks - Fórum</title>
     <style>
-        /* Estilos CSS BÁSICOS para o formulário */
+        /* Variáveis CSS */
+        :root {
+            --cor-primaria: #4a90e2;
+            /* Azul Comunitário */
+            --cor-fundo: #f8f9fa;
+            /* Cinza bem claro */
+            --cor-card: #ffffff;
+            --cor-texto: #343a40;
+            --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --cor-verde-acao: #28a745;
+            --cor-verde-hover: #218838;
+            --cor-cabecalho-fundo: #e9ecef;
+            --cor-meta-dados: #6c757d;
+            --cor-hover-fundo: #f0f8ff;
+            /* Fundo levemente azul no hover */
+        }
+
+        /* Estilos Globais */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
         }
 
         .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 25px;
+        a {
+            text-decoration: none;
+            color: var(--cor-primaria);
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        a:hover {
+            text-decoration: underline;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            /* Garante que padding não afete a largura total */
-        }
-
-        textarea {
-            resize: vertical;
-            /* Permite redimensionar apenas na vertical */
-            height: 120px;
-        }
-
-        button {
-            background-color: #007bff;
+        /* CABEÇALHO DA COMUNIDADE */
+        .header-comunidade {
+            background-color: var(--cor-primaria);
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            padding: 25px 20px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .header-comunidade h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* BOTÃO PRINCIPAL */
+        .btn-novo-topico {
+            display: inline-block;
+            background-color: var(--cor-verde-acao);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .btn-novo-topico:hover {
+            background-color: var(--cor-verde-hover);
+            text-decoration: none;
+        }
+
+        /* ESTRUTURA DA LISTA DE TÓPICOS */
+        .forum-list {
+            background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            overflow: hidden;
+        }
+
+        .topic-header {
+            display: flex;
+            padding: 15px 20px;
+            background-color: var(--cor-cabecalho-fundo);
+            font-weight: bold;
+            border-bottom: 1px solid #dee2e6;
+            color: var(--cor-texto);
+        }
+
+        .topic-row {
+            display: flex;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .topic-row:hover {
+            background-color: var(--cor-hover-fundo);
+        }
+
+        .topic-row:last-child {
+            border-bottom: none;
+        }
+
+        /* COLUNAS */
+        .col-titulo {
+            flex-basis: 60%;
+        }
+
+        .col-stats {
+            flex-basis: 15%;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--cor-meta-dados);
+        }
+
+        .col-autor {
+            flex-basis: 25%;
+            text-align: right;
+            font-size: 0.9em;
+            color: var(--cor-meta-dados);
+        }
+
+        .topic-title-link {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--cor-texto);
+        }
+
+        .topic-meta {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .topic-header {
+                display: none;
+            }
+
+            .topic-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .col-titulo,
+            .col-stats,
+            .col-autor {
+                flex-basis: 100%;
+                text-align: left;
+                margin-bottom: 5px;
+            }
+
+            .col-autor {
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -82,33 +173,72 @@
 <body>
 
     <div class="container">
-        <h2>Fale Conosco</h2>
 
-        <form action="#" method="POST">
+        <div class="header-comunidade">
+            <h1>DevTalks: Fórum de Desenvolvimento</h1>
+            <p>Conecte-se com desenvolvedores e tire suas dúvidas! </p>
+        </div>
 
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+        <a href="#" class="btn-novo-topico">Criar Novo Tópico</a>
+
+        <div class="forum-list">
+
+            <div class="topic-header">
+                <div class="col-titulo">Tópico</div>
+                <div class="col-stats">Respostas</div>
+                <div class="col-autor">Última Atividade</div>
             </div>
 
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+            <div class="topic-row">
+                <div class="col-titulo">
+                    <a href="#" class="topic-title-link">Dúvida sobre a configuração de DNS para subdomínio</a>
+                    <div class="topic-meta">Na seção: **Infraestrutura** | Tags: #apache #dns</div>
+                </div>
+                <div class="col-stats">15</div>
+                <div class="col-autor">
+                    Por: João Silva<br>
+                    Há 1h atrás
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="assunto">Assunto:</label>
-                <input type="text" id="assunto" name="assunto" placeholder="Motivo do contato" required>
+            <div class="topic-row">
+                <div class="col-titulo">
+                    <a href="#" class="topic-title-link">Qual framework CSS usar para um projeto pequeno?</a>
+                    <div class="topic-meta">Na seção: **Front-end** | Tags: #css #frontend</div>
+                </div>
+                <div class="col-stats">32</div>
+                <div class="col-autor">
+                    Por: Maria Luiza<br>
+                    Há 5h atrás
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem aqui..." required></textarea>
+            <div class="topic-row">
+                <div class="col-titulo">
+                    <a href="#" class="topic-title-link">Melhores práticas para segurança em NodeJS</a>
+                    <div class="topic-meta">Na seção: **Back-end** | Tags: #security #node</div>
+                </div>
+                <div class="col-stats">7</div>
+                <div class="col-autor">
+                    Por: DevMaster<br>
+                    Ontem
+                </div>
             </div>
 
-            <button type="submit">Enviar Mensagem</button>
+            <div class="topic-row">
+                <div class="col-titulo">
+                    <a href="#" class="topic-title-link">Criando uma landing page bonita apenas com HTML/CSS</a>
+                    <div class="topic-meta">Na seção: **Design** | Tags: #html #css</div>
+                </div>
+                <div class="col-stats">2</div>
+                <div class="col-autor">
+                    Por: Usuário Novo<br>
+                    3 dias atrás
+                </div>
+            </div>
 
-        </form>
+        </div>
+
     </div>
 
 </body>
