@@ -1,269 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Gentleman's Cut - Barbearia Premium</title>
+    <title>Formulário de Contato Profissional</title>
+
     <style>
-        /* Variáveis CSS */
-        :root {
-            --cor-fundo: #1c1c1c;       /* Cinza Escuro Quase Preto */
-            --cor-destaque: #c08c4e;    /* Dourado/Cobre Elegante */
-            --cor-texto: #f5f5f5;       /* Branco Off-White */
-            --cor-card: #2c2c2c;
-            --fonte-titulo: 'Georgia', serif;
-            --fonte-padrao: 'Arial', sans-serif;
-        }
-
-        /* Estilos Globais */
+        /* Estilos CSS BÁSICOS para o formulário */
         body {
-            font-family: var(--fonte-padrao);
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             margin: 0;
-            padding: 0;
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--cor-destaque);
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #d1b184; /* Tom mais claro do dourado */
-        }
-
-        h1, h2, h3 {
-            font-family: var(--fonte-titulo);
-            color: var(--cor-destaque);
-            text-align: center;
-        }
-        
-        section {
-            padding: 80px 20px;
-            text-align: center;
         }
 
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* HEADER & NAVEGAÇÃO */
-        header {
-            background-color: #000;
-            padding: 20px 0;
-            border-bottom: 3px solid var(--cor-destaque);
-        }
-
-        .logo {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--cor-destaque);
-            font-family: var(--fonte-titulo);
-            margin-bottom: 10px;
-        }
-
-        nav a {
-            color: var(--cor-texto);
-            margin: 0 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        nav a:hover {
-            color: var(--cor-destaque);
-        }
-
-        /* SEÇÃO HERO (Banner Inicial) */
-        #hero {
-            background: url('https://via.placeholder.com/1500x700/333333/FFFFFF?text=IMAGEM+BARBEARIA') no-repeat center center/cover;
-            color: white;
-            padding: 150px 20px;
-        }
-        
-        #hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            color: var(--cor-destaque);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        #hero p {
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-        }
-
-        .btn-agendar {
-            display: inline-block;
-            background-color: var(--cor-destaque);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-agendar:hover {
-            background-color: #e0ac69;
-            color: #111;
-        }
-
-        /* SEÇÃO SERVIÇOS */
-        #servicos h2 {
-            margin-bottom: 40px;
-        }
-
-        .servicos-grid {
-            display: flex;
-            justify-content: space-around;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .servico-item {
-            background-color: var(--cor-card);
+            background-color: #ffffff;
             padding: 30px;
             border-radius: 8px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
         }
 
-        .servico-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .servico-item h3 {
-            font-size: 1.5em;
-            color: var(--cor-destaque);
-            margin-top: 0;
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
         }
 
-        /* SEÇÃO CONTATO/FOOTER */
-        #contato {
-            background-color: var(--cor-card);
-            border-top: 3px solid var(--cor-destaque);
-            color: var(--cor-texto);
+        .form-group {
+            margin-bottom: 15px;
         }
 
-        .contato-info {
-            display: flex;
-            justify-content: space-between;
-            text-align: left;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
         }
 
-        .contato-bloco {
-            width: 45%;
-            margin-bottom: 20px;
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            /* Garante que padding não afete a largura total */
         }
 
-        .contato-bloco h3 {
-            color: var(--cor-destaque);
-            text-align: left;
+        textarea {
+            resize: vertical;
+            /* Permite redimensionar apenas na vertical */
+            height: 120px;
         }
 
-        footer {
-            padding: 20px 0;
-            background-color: #000;
-            font-size: 0.9em;
-            border-top: 1px solid #333;
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            #hero h1 {
-                font-size: 2.5em;
-            }
-            .servicos-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .contato-bloco {
-                width: 100%;
-            }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="container">
-            <div class="logo">The Gentleman's Cut</div>
-            <nav>
-                <a href="#hero">Início</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#contato">Agendamento</a>
-            </nav>
-        </div>
-    </header>
+    <div class="container">
+        <h2>Fale Conosco</h2>
 
-    <section id="hero">
-        <div class="container">
-            <h1>Onde a Tradição Encontra o Estilo</h1>
-            <p>Os melhores cortes de cabelo, barba e tratamentos exclusivos para o cavalheiro moderno.</p>
-            <a href="#contato" class="btn-agendar">Agende Seu Horário</a>
-        </div>
-    </section>
+        <form action="#" method="POST">
 
-    <section id="servicos">
-        <div class="container">
-            <h2>Nossos Serviços Premium</h2>
-            <div class="servicos-grid">
-                
-                <div class="servico-item">
-                    <h3>Corte Clássico</h3>
-                    <p>O tradicional corte tesoura, finalizado com produtos de alta qualidade. ($80)</p>
-                </div>
-
-                <div class="servico-item">
-                    <h3>Barba Terapia</h3>
-                    <p>Barbear com toalha quente, navalha e massagem facial relaxante. ($60)</p>
-                </div>
-
-                <div class="servico-item">
-                    <h3>Pacote Completo</h3>
-                    <p>Corte de cabelo + Barba Terapia. Experiência completa de cuidado masculino. ($120)</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contato">
-        <div class="container">
-            <h2>Localização & Contato</h2>
-
-            <div class="contato-info">
-                <div class="contato-bloco">
-                    <h3>Horário de Funcionamento</h3>
-                    <p>Segunda a Sexta: 09h00 às 20h00</p>
-                    <p>Sábados: 09h00 às 17h00</p>
-                    <p>Domingos: Fechado</p>
-                </div>
-                
-                <div class="contato-bloco">
-                    <h3>Agende por WhatsApp</h3>
-                    <p>Telefone: (XX) XXXX-XXXX</p>
-                    <p>E-mail: contato@gentlemanscut.com</p>
-                    <p>Endereço: Rua do Barbeiro, 123 - Centro</p>
-                </div>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
             </div>
 
-            <p>Utilize nosso <a href="#" style="color: white; text-decoration: underline;">Sistema de Agendamento Online</a> para marcar em 3 cliques!</p>
-        </div>
-    </section>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+            </div>
 
-    <footer>
-        <p>&copy; 2025 The Gentleman's Cut. Todos os direitos reservados. Design por [Seu Nome].</p>
-    </footer>
+            <div class="form-group">
+                <label for="assunto">Assunto:</label>
+                <input type="text" id="assunto" name="assunto" placeholder="Motivo do contato" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem aqui..." required></textarea>
+            </div>
+
+            <button type="submit">Enviar Mensagem</button>
+
+        </form>
+    </div>
 
 </body>
+
 </html>
