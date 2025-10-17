@@ -1,246 +1,251 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Moderno e Simples</title>
+    <title>Blog DevTalks - Notícias e Tutoriais de Programação</title>
     <style>
-        /* Variáveis CSS para Cores */
+        /* Variáveis CSS HERDADAS DA COMUNIDADE DEV TALKS */
         :root {
-            --cor-principal: #3498db; /* Azul vibrante */
-            --cor-secundaria: #2c3e50; /* Azul escuro/quase preto */
-            --fundo-claro: #f4f6f9;
-            --texto-escuro: #333;
-            --sombra-suave: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --cor-primaria: #4a90e2;
+            /* Azul Comunitário */
+            --cor-fundo: #f8f9fa;
+            /* Cinza bem claro */
+            --cor-card: #ffffff;
+            --cor-texto: #343a40;
+            --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --cor-verde-acao: #28a745;
+            --cor-verde-hover: #218838;
+            --cor-cabecalho-fundo: #e9ecef;
+            --cor-meta-dados: #6c757d;
+            --cor-hover-fundo: #f0f8ff;
+            --cor-link-secundario: #007bff;
+            /* Azul padrão para links de leitura */
         }
 
         /* Estilos Globais */
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--fundo-claro);
-            color: var(--texto-escuro);
-            line-height: 1.6;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         a {
             text-decoration: none;
-            color: var(--cor-principal);
-            transition: color 0.3s ease;
+            color: var(--cor-link-secundario);
         }
 
         a:hover {
-            color: var(--cor-secundaria);
+            text-decoration: underline;
         }
 
-        /* HEADER - Cabeçalho Principal */
-        header {
-            background-color: var(--cor-secundaria);
-            color: #fff;
-            padding: 20px 0;
-            box-shadow: var(--sombra-suave);
-        }
-
-        header .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            letter-spacing: 1px;
-        }
-
-        header nav a {
-            color: #fff;
-            margin-left: 20px;
-            font-weight: 500;
-        }
-
-        header nav a:hover {
-            color: var(--cor-principal);
-        }
-
-        /* LAYOUT PRINCIPAL (Main e Aside) */
-        .content-area {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        /* MAIN - Área de Postagens */
-        main {
-            flex: 3; /* Ocupa 3/4 do espaço */
-            margin-right: 30px;
-        }
-
-        .post-card {
-            background-color: #fff;
-            padding: 30px;
-            margin-bottom: 25px;
+        /* CABEÇALHO (Herdado) */
+        .header-comunidade {
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 30px 20px;
             border-radius: 8px;
-            box-shadow: var(--sombra-suave);
-            transition: transform 0.3s ease;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-comunidade h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+
+        /* ESTRUTURA PRINCIPAL DO BLOG (Grid para Conteúdo e Sidebar) */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            /* Coluna principal (3) e Sidebar (1) */
+            gap: 30px;
+        }
+
+        /* POST CARD (Similar ao Forum List) */
+        .post-card {
+            background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
         }
 
         .post-card:hover {
-            transform: translateY(-5px); /* Efeito de elevação sutil */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .post-card h2 {
-            color: var(--cor-secundaria);
-            margin-top: 0;
+        .post-title {
             font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .post-title a {
+            color: var(--cor-texto);
+            /* Título principal mais escuro */
+            text-decoration: none;
         }
 
         .post-meta {
-            color: #999;
             font-size: 0.9em;
+            color: var(--cor-meta-dados);
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
 
-        .post-meta span {
-            margin-right: 15px;
+        .post-excerpt {
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        .post-summary {
+        /* SIDEBAR (Blocos de Conteúdo) */
+        .sidebar-widget {
+            background-color: var(--cor-card);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            padding: 20px;
             margin-bottom: 20px;
         }
 
-        /* ASIDE - Barra Lateral */
-        aside {
-            flex: 1; /* Ocupa 1/4 do espaço */
-            padding-left: 20px;
-        }
-
-        .widget {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: var(--sombra-suave);
-        }
-
-        .widget h3 {
-            color: var(--cor-principal);
-            border-bottom: 2px solid var(--cor-principal);
+        .sidebar-widget h3 {
+            font-size: 1.2em;
+            color: var(--cor-texto);
+            border-bottom: 2px solid var(--cor-primaria);
             padding-bottom: 5px;
             margin-top: 0;
-            font-size: 1.2em;
+            margin-bottom: 15px;
         }
 
-        .widget ul {
+        .sidebar-list {
             list-style: none;
             padding: 0;
         }
 
-        .widget ul li {
-            padding: 5px 0;
+        .sidebar-list li {
+            margin-bottom: 8px;
         }
 
-        /* FOOTER - Rodapé */
-        footer {
-            background-color: var(--cor-secundaria);
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
+        .sidebar-list a {
+            color: var(--cor-meta-dados);
+            font-size: 0.95em;
         }
 
-        /* Responsividade (Para telas pequenas) */
-        @media (max-width: 768px) {
-            .content-area {
-                flex-direction: column; /* Coloca os itens um abaixo do outro */
+        .sidebar-list a:hover {
+            color: var(--cor-primaria);
+            text-decoration: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                /* Uma coluna em telas menores */
             }
 
-            main {
-                margin-right: 0;
-            }
-
-            aside {
-                margin-top: 20px;
-                padding-left: 0;
+            .post-title {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="container">
-            <h1><a href="index.html" style="color: white;">DEV Blog</a></h1>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">Categorias</a>
-                <a href="#">Sobre</a>
-                <a href="#">Contato</a>
-            </nav>
+    <div class="container">
+
+        <div class="header-comunidade">
+            <h1>Blog DevTalks</h1>
+            <p>Os melhores tutoriais, notícias e discussões sobre o mundo Dev!</p>
         </div>
-    </header>
 
-    <div class="content-area">
-        
-        <main>
-            
-            <article class="post-card">
-                <h2><a href="#">O Futuro da Inteligência Artificial no Desenvolvimento Web</a></h2>
-                <div class="post-meta">
-                    <span>📅 17/10/2025</span>
-                    <span>👤 Por [Seu Nome]</span>
-                    <span>#IA, #WebDev</span>
-                </div>
-                <div class="post-summary">
-                    <p>Exploramos como as ferramentas de IA estão revolucionando a forma como escrevemos código, desde a geração automática de CSS até a criação de estruturas complexas de backend. A codificação está mudando...</p>
-                </div>
-                <p><a href="#" class="btn-leia-mais">Continuar Lendo &rarr;</a></p>
-            </article>
+        <div class="blog-grid">
 
-            <article class="post-card">
-                <h2><a href="#">Guia Completo de Configuração de Virtual Hosts no Apache</a></h2>
-                <div class="post-meta">
-                    <span>📅 15/10/2025</span>
-                    <span>👤 Por [Seu Nome]</span>
-                    <span>#Linux, #Servidores</span>
-                </div>
-                <div class="post-summary">
-                    <p>Aprenda a hospedar múltiplos sites no mesmo servidor Linux. Detalhamos o uso dos comandos 'a2ensite', 'a2dissite' e a importância dos certificados SSL do Let's Encrypt...</p>
-                </div>
-                <p><a href="#" class="btn-leia-mais">Continuar Lendo &rarr;</a></p>
-            </article>
+            <main class="main-content">
+
+                <article class="post-card">
+                    <h2 class="post-title"><a href="#">O Futuro do React: Server Components e o Fim do Client-Side?</a>
+                    </h2>
+                    <p class="post-meta">
+                        Por **DevMaster** | Em **Front-end** | 17 de Outubro, 2025
+                    </p>
+                    <p class="post-excerpt">
+                        Os Server Components prometem revolucionar a forma como construímos aplicações React, trazendo
+                        renderização no servidor de volta ao foco. Entenda como essa mudança impacta performance, SEO e
+                        a sua arquitetura.
+                    </p>
+                    <a href="#" class="read-more-link">Continuar Lendo &raquo;</a>
+                </article>
+
+                <article class="post-card">
+                    <h2 class="post-title"><a href="#">Guia Prático: Configurando um CI/CD pipeline com GitHub
+                            Actions</a></h2>
+                    <p class="post-meta">
+                        Por **João Silva** | Em **DevOps** | 15 de Outubro, 2025
+                    </p>
+                    <p class="post-excerpt">
+                        Automação é a chave para a produtividade. Este guia passo a passo irá te mostrar como integrar
+                        testes e deploy automáticos em seu repositório usando o poder do GitHub Actions.
+                    </p>
+                    <a href="#" class="read-more-link">Continuar Lendo &raquo;</a>
+                </article>
+
+                <article class="post-card">
+                    <h2 class="post-title"><a href="#">Segurança em APIs: 5 Vulnerabilidades Comuns em NodeJS</a></h2>
+                    <p class="post-meta">
+                        Por **Maria Luiza** | Em **Back-end, Segurança** | 10 de Outubro, 2025
+                    </p>
+                    <p class="post-excerpt">
+                        Mantenha seu código e seus usuários seguros. Abordamos as cinco vulnerabilidades mais exploradas
+                        em aplicações NodeJS e como você pode se defender delas.
+                    </p>
+                    <a href="#" class="read-more-link">Continuar Lendo &raquo;</a>
+                </article>
 
             </main>
 
-        <aside>
-            <div class="widget">
-                <h3>Sobre o Autor</h3>
-                <p>Sou desenvolvedor full-stack e compartilho aqui tutoriais, dicas de programação e reflexões sobre tecnologia e infraestrutura.</p>
-            </div>
+            <aside class="sidebar">
 
-            <div class="widget">
-                <h3>Categorias</h3>
-                <ul>
-                    <li><a href="#">Front-end (12)</a></li>
-                    <li><a href="#">Back-end (8)</a></li>
-                    <li><a href="#">Linux & Infra (5)</a></li>
-                    <li><a href="#">Banco de Dados (3)</a></li>
-                </ul>
-            </div>
-        </aside>
+                <div class="sidebar-widget">
+                    <h3>Categorias</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#">Front-end (14)</a></li>
+                        <li><a href="#">Back-end (10)</a></li>
+                        <li><a href="#">DevOps (8)</a></li>
+                        <li><a href="#">Segurança (5)</a></li>
+                        <li><a href="#">Carreira (12)</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Populares</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#">O que esperar do PHP 9</a></li>
+                        <li><a href="#">Como monetizar projetos open source</a></li>
+                        <li><a href="#">Dicas de entrevista para Dev Jr</a></li>
+                        <li><a href="#">Kubernetes para iniciantes</a></li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
 
     </div>
 
-    <footer>
-        <p>Desenvolvido com ❤️ | &copy; 2025 Blog Moderno e Simples. Todos os direitos reservados.</p>
-    </footer>
-
 </body>
+
 </html>
