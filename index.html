@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade DevTalks - Fórum</title>
+    <title>Comunidade TarefaRedes - Fórum</title>
     <style>
         /* Variáveis CSS */
         :root {
-            --cor-primaria: #4a90e2; /* Azul Comunitário */
-            --cor-fundo: #f8f9fa; /* Cinza bem claro */
+            --cor-primaria: #4a90e2;
+            /* Azul Comunitário */
+            --cor-fundo: #f8f9fa;
+            /* Cinza bem claro */
             --cor-card: #ffffff;
             --cor-texto: #343a40;
             --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -52,11 +55,12 @@
             margin: 0;
             font-size: 2em;
         }
-        
+
         /* BOTÃO PRINCIPAL */
         .btn-novo-topico {
             display: inline-block;
-            background-color: #28a745; /* Verde para ação */
+            background-color: #28a745;
+            /* Verde para ação */
             color: white;
             padding: 12px 25px;
             border-radius: 5px;
@@ -70,13 +74,14 @@
             background-color: #218838;
             text-decoration: none;
         }
-        
+
         /* ESTRUTURA DA LISTA DE TÓPICOS */
         .forum-list {
             background-color: var(--cor-card);
             border-radius: 8px;
             box-shadow: var(--sombra-card);
-            overflow: hidden; /* Garante que os border-radius funcionem nos itens */
+            overflow: hidden;
+            /* Garante que os border-radius funcionem nos itens */
         }
 
         .topic-header {
@@ -97,7 +102,8 @@
         }
 
         .topic-row:hover {
-            background-color: #f0f8ff; /* Fundo levemente azul no hover */
+            background-color: #f0f8ff;
+            /* Fundo levemente azul no hover */
         }
 
         .topic-row:last-child {
@@ -106,29 +112,32 @@
 
         /* COLUNAS */
         .col-titulo {
-            flex-basis: 60%; /* Ocupa 60% da largura */
+            flex-basis: 60%;
+            /* Ocupa 60% da largura */
         }
 
         .col-stats {
-            flex-basis: 15%; /* Ocupa 15% da largura */
+            flex-basis: 15%;
+            /* Ocupa 15% da largura */
             text-align: center;
             font-size: 0.9em;
             color: #6c757d;
         }
-        
+
         .col-autor {
-            flex-basis: 25%; /* Ocupa 25% da largura */
+            flex-basis: 25%;
+            /* Ocupa 25% da largura */
             text-align: right;
             font-size: 0.9em;
             color: #6c757d;
         }
-        
+
         .topic-title-link {
             font-size: 1.1em;
             font-weight: 600;
             color: var(--cor-texto);
         }
-        
+
         .topic-meta {
             font-size: 0.8em;
             color: #999;
@@ -138,37 +147,43 @@
         /* Responsividade */
         @media (max-width: 600px) {
             .topic-header {
-                display: none; /* Esconde o cabeçalho das colunas em mobile */
+                display: none;
+                /* Esconde o cabeçalho das colunas em mobile */
             }
+
             .topic-row {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .col-titulo, .col-stats, .col-autor {
+
+            .col-titulo,
+            .col-stats,
+            .col-autor {
                 flex-basis: 100%;
                 text-align: left;
                 margin-bottom: 5px;
             }
+
             .col-autor {
                 font-size: 0.8em;
             }
         }
-
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        
+
         <div class="header-comunidade">
-            <h1>DevTalks: Fórum de Desenvolvimento</h1>
+            <h1>TarefaRedes: Fórum de Desenvolvimento</h1>
             <p>Conecte-se com desenvolvedores e tire suas dúvidas!</p>
         </div>
 
         <a href="#" class="btn-novo-topico">Criar Novo Tópico</a>
 
         <div class="forum-list">
-            
+
             <div class="topic-header">
                 <div class="col-titulo">Tópico</div>
                 <div class="col-stats">Respostas</div>
@@ -210,7 +225,7 @@
                     Ontem
                 </div>
             </div>
-            
+
             <div class="topic-row">
                 <div class="col-titulo">
                     <a href="#" class="topic-title-link">Criando uma landing page bonita apenas com HTML/CSS</a>
@@ -228,4 +243,5 @@
     </div>
 
 </body>
+
 </html>
